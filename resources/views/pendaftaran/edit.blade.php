@@ -365,11 +365,12 @@
                                                     <div class="col-6">
                                                         <div class="form-group mt-4">
                                                             <label>Agama</label>
-                                                            <select name="agama" id="agama" class="single-select">
+                                                            <select name="id_agama" id="id_agama"
+                                                                class="single-select @error('id_agama') is-invalid @enderror">
                                                                 <option value="">Silahkan Pilih Agama</option>
                                                                 @foreach ($agama as $agm)
                                                                     <option value="{{ $agm->id }}"
-                                                                        {{ old('agama') == $agm->id ? 'selected' : '' }}>
+                                                                        {{ old('id_agama') == $agm->id ? 'selected' : '' }}>
                                                                         {{ $agm->nama_agama }}
                                                                     </option>
                                                                 @endforeach
@@ -516,11 +517,13 @@
             function handleKewarganegaraanChange() {
                 var kewarganegaraanSelect = document.getElementById('kewarganegaraan');
                 var negaraAsalRow = document.getElementById('negara-asal-row');
+                var negaraAsalInput = document.getElementById('negara_asal');
 
                 if (kewarganegaraanSelect.value === 'WNA') {
                     negaraAsalRow.style.display = 'flex';
                 } else {
                     negaraAsalRow.style.display = 'none';
+                    negaraAsalInput.value = 'Indonesia';
                 }
             }
 
@@ -532,13 +535,16 @@
             function toggleLahirFields(tempatLahir) {
                 var provinsiKotaRow = document.getElementById('provinsi-kota-row');
                 var negaraLahirRow = document.getElementById('negara-lahir-row');
+                var negaraLahirInput = document.getElementById('negara_lahir');
 
                 if (tempatLahir === 'Dalam Negeri') {
                     provinsiKotaRow.style.display = 'flex';
                     negaraLahirRow.style.display = 'none';
+                    negaraLahirInput.value = 'Indonesia';
                 } else if (tempatLahir === 'Luar Negeri') {
                     provinsiKotaRow.style.display = 'none';
                     negaraLahirRow.style.display = 'flex';
+                    negaraLahirInput.value = '';
                 } else {
                     provinsiKotaRow.style.display = 'none';
                     negaraLahirRow.style.display = 'none';

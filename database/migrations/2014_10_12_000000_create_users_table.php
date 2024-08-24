@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('username')->unique();
-            $table->string('password');
+            $table->string('username')->nullable();
+            $table->string('password')->nullable();
 
             $table->string('foto')->nullable();
             $table->string('nama_lengkap')->nullable();
@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('nomor_hp')->nullable();
             $table->string('email')->nullable();
             $table->string('kewarganegaraan')->nullable();
+            $table->string('negara_asal')->nullable();
             $table->date('tanggal_lahir')->nullable();
             $table->string('tempat_lahir')->nullable();
             $table->unsignedBigInteger('id_kabupaten_kota_lahir')->nullable();
@@ -36,10 +37,10 @@ return new class extends Migration
             $table->string('status_menikah')->nullable();
             $table->unsignedBigInteger('id_agama')->nullable();
 
-            $table->integer('nilai_mtk')->nullable();
-            $table->integer('nilai_bing')->nullable();
-            $table->integer('nilai_bindo')->nullable();
-            $table->integer('nilai_rata')->nullable();
+            $table->double('nilai_mtk')->nullable();
+            $table->double('nilai_bing')->nullable();
+            $table->double('nilai_bindo')->nullable();
+            $table->double('nilai_rata')->nullable();
 
             $table->rememberToken();
             $table->timestamps();

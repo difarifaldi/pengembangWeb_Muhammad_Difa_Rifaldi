@@ -54,6 +54,7 @@
                                                     <td>{{ $user->nilai_mtk }}</td>
                                                     <td>{{ $user->nilai_bindo }}</td>
                                                     <td>{{ $user->nilai_bing }}</td>
+                                                    <td>{{ $user->nilai_rata }}</td>
 
                                                     <td>
                                                         <a href="/user/{{ $user->id }}/edit"
