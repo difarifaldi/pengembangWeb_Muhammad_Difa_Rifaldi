@@ -48,7 +48,7 @@
                                             </div>
 
                                             <div class="form-group mt-4">
-                                                <label>Password <span class="text-danger">*</span></label>
+                                                <label>Password </span></label>
                                                 <div class="input-group" id="show_hide_password">
                                                     <input
                                                         class="form-control border-right-0 @error('password') is-invalid @enderror"

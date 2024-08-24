@@ -33,11 +33,12 @@
                     <div class="menu-title">Data Pendaftaran</div>
                 </a>
                 <ul>
-
-                    <li> <a href="/pendaftaran/{{ Auth::user()->id }}/edit">
-                            <i class="bi bi-person-add"></i>Pendaftaran Mahasiswa
-                        </a>
-                    </li>
+                    @role('mahasiswa')
+                        <li> <a href="/pendaftaran/{{ Auth::user()->id }}/edit">
+                                <i class="bi bi-person-add"></i>Pendaftaran Mahasiswa
+                            </a>
+                        </li>
+                    @endhasrole
                     @role('admin')
                         <li> <a href="/pendaftaran"><i class="bi bi-person-workspace"></i>Data Mahasiswa</a>
                         </li>

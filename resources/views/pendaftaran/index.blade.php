@@ -54,7 +54,7 @@
                                                     <td>{{ $user->nilai_rata }}</td>
 
                                                     <td>
-                                                        <a href="/user/{{ $user->id }}/edit"
+                                                        <a href="/pendaftaran/{{ $user->id }}/edit"
                                                             class="btn btn-warning btn-sm"><i class="bi bi-brush"></i></a>
 
                                                         <button class="btn btn-danger btn-sm h-full  border-0"
@@ -95,7 +95,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    Apakah Anda yakin ingin menghapus akun pengguna ini?
+                    Apakah Anda yakin ingin menghapus user ini?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
@@ -108,14 +108,14 @@
     <script>
         let userToDelete = null;
 
-        function deleteUser(userId) {
-            userToDelete = userId;
+        function deleteUser(user) {
+            userToDelete = user;
             $('#deleteUserModal').modal('show');
         }
+
         document.getElementById('confirmDelete').addEventListener('click', function() {
             if (userToDelete) {
-
-                fetch(`/admin/delete-user/${userToDelete}`, {
+                fetch(`/user/${userToDelete}`, {
                         method: 'DELETE',
                         headers: {
                             'Content-Type': 'application/json',
@@ -130,70 +130,32 @@
                     })
                     .then(data => {
                         $('#deleteUserModal').modal('hide');
-                        // Tampilkan pesan SweetAlert berhasil
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Berhasil',
-                            text: 'Akun pengguna berhasil dihapus!',
-                            timer: 1400,
-                            showConfirmButton: false
-                        });
-                        // Refresh halaman setelah berhasil menghapus akun pengguna
-                        location.reload();
+                        if (data.success) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Berhasil',
+                                text: data.success,
+                                timer: 1400,
+                                showConfirmButton: false
+                            });
+                            // Refresh halaman setelah berhasil menghapus User
+                            location.reload();
+                        } else {
+                            throw new Error(data.error || 'Terjadi kesalahan.');
+                        }
                     })
                     .catch(error => {
                         $('#deleteUserModal').modal('hide');
-                        // Tampilkan pesan SweetAlert gagal
                         Swal.fire({
                             icon: 'error',
                             title: 'Gagal',
-                            text: 'Anda tidak bisa menghapus pengguna ini!',
+                            text: error.message || 'Anda tidak bisa menghapus user ini!',
                             timer: 1400,
                             showConfirmButton: false
                         });
                         console.error('There was an error!', error);
                     });
-            };
+            }
         });
-    </script>
-
-    <script>
-        function toggleUserStatus(userId) {
-            fetch(`/admin/toggle-user-status`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    body: JSON.stringify({
-                        userId: userId
-                    })
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Status pengguna berhasil diperbarui!',
-                        showConfirmButton: false,
-                        timer: 1500
-                    }).then(() => {
-                        // Refresh halaman setelah berhasil memperbarui status pengguna
-                        location.reload();
-                    });
-                })
-                .catch(error => {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Terjadi kesalahan!',
-                        text: 'Tidak dapat memperbarui status pengguna.',
-                    });
-                    console.error('There was an error!', error);
-                });
-        }
     </script>
 @endsection

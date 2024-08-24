@@ -570,7 +570,7 @@
                 } else if (tempatLahir === 'Luar Negeri') {
                     provinsiKotaRow.style.display = 'none';
                     negaraLahirRow.style.display = 'flex';
-                    negaraLahirInput.value = '';
+
                 } else {
                     provinsiKotaRow.style.display = 'none';
                     negaraLahirRow.style.display = 'none';
