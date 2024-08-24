@@ -2,20 +2,52 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+
+    public function index()
+    {
+        $users = User::all();
+        return view('user.index', compact('users'));
+    }
+
+    public function create()
+    {
+        return view('user.create');
+    }
+
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'username' => 'required|string|min:8|unique:users',
+            'password' => 'required|string|min:8',
+        ]);
+
+        $user = User::create([
+            'username' => $validatedData['username'],
+            'password' => Hash::make($validatedData['password']),
+        ]);
+
+
+        $user->assignRole('mahasiswa');
+
+        return redirect()->route('user.index')->with('success', 'Berhasil menambahkan akun baru');
+    }
+
+
+
+
     public function showLoginForm()
     {
         return view('login');
     }
 
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
-     */
+
     public function check_login(Request $request)
     {
         $credentials = $request->validate([
