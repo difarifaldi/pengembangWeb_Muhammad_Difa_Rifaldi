@@ -39,4 +39,25 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function agama()
+    {
+        return $this->belongsTo(Agama::class, 'id_agama');
+    }
+    public function kabupatenKotaAlamat()
+    {
+        return $this->belongsTo(KabupatenKota::class, 'id_kabupaten_kota_alamat');
+    }
+    public function kabupatenKotaLahir()
+    {
+        return $this->belongsTo(KabupatenKota::class, 'id_kabupaten_kota_lahir');
+    }
+    public function provinsiAlamat()
+    {
+        return $this->belongsTo(Provinsi::class, 'id_provinsi_alamat');
+    }
+    public function provinsiLahir()
+    {
+        return $this->belongsTo(Provinsi::class, 'id_provinsi_lahir');
+    }
 }

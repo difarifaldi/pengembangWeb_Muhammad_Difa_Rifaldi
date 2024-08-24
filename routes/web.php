@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -34,4 +35,6 @@ Route::group(['middleware' => 'auth'], function () {
     })->name('home');
 
     Route::resource('/user', UserController::class);
+    Route::resource('/pendaftaran', PendaftaranController::class);
+    Route::get('/getKabupatenKota/{id_provinsi}', [PendaftaranController::class, 'getKabupatenKota']);
 });

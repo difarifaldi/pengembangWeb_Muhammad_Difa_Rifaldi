@@ -34,10 +34,10 @@
                 </a>
                 <ul>
 
-                    <li> <a href="/mahasiswa/create"><i class="bi bi-person-check"></i>Pendaftaran Mahasiswa</a>
+                    <li> <a href="/pendaftaran/create"><i class="bi bi-person-add"></i>Pendaftaran Mahasiswa</a>
                     </li>
                     @role('admin')
-                        <li> <a href="/mahasiswa"><i class="bi bi-person-check"></i>Data Mahasiswa</a>
+                        <li> <a href="/pendaftaran"><i class="bi bi-person-workspace"></i>Data Mahasiswa</a>
                         </li>
                     @endrole
 
