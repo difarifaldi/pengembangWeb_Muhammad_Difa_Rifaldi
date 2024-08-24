@@ -21,9 +21,6 @@
                             </div>
                             <hr />
 
-                            <a href="/pendaftaran/create" class="btn btn-md btn-success mb-3 ml-3">Tambah Mahasiswa</a>
-
-
                             <div class="table-responsive">
                                 <div class="card-body">
                                     <table id="example" class="table table-striped table-bordered text-center"
@@ -199,18 +196,4 @@
                 });
         }
     </script>
-
-
-
-
-    @if ($message = Session::get('success'))
-        <script>
-            Swal.fire({
-                icon: 'success',
-                title: '{{ $message }}',
-                showConfirmButton: false,
-                timer: 1500
-            });
-        </script>
-    @endif
 @endsection

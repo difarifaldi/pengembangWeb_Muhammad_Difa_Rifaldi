@@ -34,7 +34,9 @@
                 </a>
                 <ul>
 
-                    <li> <a href="/pendaftaran/create"><i class="bi bi-person-add"></i>Pendaftaran Mahasiswa</a>
+                    <li> <a href="/pendaftaran/{{ Auth::user()->id }}/edit">
+                            <i class="bi bi-person-add"></i>Pendaftaran Mahasiswa
+                        </a>
                     </li>
                     @role('admin')
                         <li> <a href="/pendaftaran"><i class="bi bi-person-workspace"></i>Data Mahasiswa</a>

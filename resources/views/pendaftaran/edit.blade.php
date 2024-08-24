@@ -32,10 +32,11 @@
                                             </div>
                                             <hr />
                                             <!-- Formulir pendaftaran -->
-                                            <form id="pendaftaran-form" action="{{ route('pendaftaran.store') }}"
+                                            <form id="pendaftaran-form"
+                                                action="{{ route('pendaftaran.update', ['user' => $user->id]) }}"
                                                 method="POST" enctype="multipart/form-data">
                                                 @csrf
-
+                                                @method('PATCH')
                                                 <div class="row">
                                                     <div class="col-6">
                                                         <div class="form-group mt-4">

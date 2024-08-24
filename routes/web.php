@@ -35,6 +35,6 @@ Route::group(['middleware' => 'auth'], function () {
     })->name('home');
 
     Route::resource('/user', UserController::class);
-    Route::resource('/pendaftaran', PendaftaranController::class);
+    Route::resource('/pendaftaran', PendaftaranController::class)->parameters(['pendaftaran' => 'user']);
     Route::get('/getKabupatenKota/{id_provinsi}', [PendaftaranController::class, 'getKabupatenKota']);
 });
