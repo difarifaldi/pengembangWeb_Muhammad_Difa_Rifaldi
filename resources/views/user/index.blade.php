@@ -116,24 +116,26 @@
                     })
                     .then(data => {
                         $('#deleteUserModal').modal('hide');
-                        // Tampilkan pesan SweetAlert berhasil
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Berhasil',
-                            text: 'User berhasil dihapus!',
-                            timer: 1400,
-                            showConfirmButton: false
-                        });
-                        // Refresh halaman setelah berhasil menghapus User
-                        location.reload();
+                        if (data.success) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Berhasil',
+                                text: data.success,
+                                timer: 1400,
+                                showConfirmButton: false
+                            });
+                            // Refresh halaman setelah berhasil menghapus User
+                            location.reload();
+                        } else {
+                            throw new Error(data.error || 'Terjadi kesalahan.');
+                        }
                     })
                     .catch(error => {
                         $('#deleteUserModal').modal('hide');
-                        // Tampilkan pesan SweetAlert gagal
                         Swal.fire({
                             icon: 'error',
                             title: 'Gagal',
-                            text: 'Anda tidak bisa menghapus user ini!',
+                            text: error.message || 'Anda tidak bisa menghapus user ini!',
                             timer: 1400,
                             showConfirmButton: false
                         });
