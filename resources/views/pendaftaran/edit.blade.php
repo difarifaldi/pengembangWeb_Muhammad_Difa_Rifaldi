@@ -43,7 +43,7 @@
                                                             <label>Nama Lengkap</label>
                                                             <input type="text" name="nama_lengkap" id="nama_lengkap"
                                                                 class="form-control @error('nama_lengkap') is-invalid @enderror"
-                                                                value="{{ old('nama_lengkap') }}"
+                                                                value="{{ old('nama_lengkap', $user->nama_lengkap) }}"
                                                                 placeholder="Masukan Nama Lengkap" />
                                                             <!-- error message untuk nama_lengkap -->
                                                             @error('nama_lengkap')
@@ -56,7 +56,7 @@
                                                             <label>Alamat KTP</label>
                                                             <input type="text" name="alamat_ktp" id="alamat_ktp"
                                                                 class="form-control @error('alamat_ktp') is-invalid @enderror"
-                                                                value="{{ old('alamat_ktp') }}"
+                                                                value="{{ old('alamat_ktp', $user->alamat_ktp) }}"
                                                                 placeholder="Masukan Alamat KTP" />
                                                             <!-- error message untuk alamat_ktp -->
                                                             @error('alamat_ktp')
@@ -73,7 +73,7 @@
                                                             <input type="text" name="alamat_saat_ini"
                                                                 id="alamat_saat_ini"
                                                                 class="form-control @error('alamat_saat_ini') is-invalid @enderror"
-                                                                value="{{ old('alamat_saat_ini') }}"
+                                                                value="{{ old('alamat_saat_ini', $user->alamat_saat_ini) }}"
                                                                 placeholder="Masukan Alamat Saat Ini" />
                                                             <!-- error message untuk alamat_saat_ini -->
                                                             @error('alamat_saat_ini')
@@ -86,7 +86,7 @@
                                                             <label>Kecamatan</label>
                                                             <input type="text" name="kecamatan" id="kecamatan"
                                                                 class="form-control @error('kecamatan') is-invalid @enderror"
-                                                                value="{{ old('kecamatan') }}"
+                                                                value="{{ old('kecamatan', $user->kecamatan) }}"
                                                                 placeholder="Masukan Kecamatan" />
                                                             <!-- error message untuk kecamatan -->
                                                             @error('kecamatan')
@@ -106,7 +106,7 @@
                                                                 <option value="">Silahkan Pilih Provinsi</option>
                                                                 @foreach ($provinsi as $prov)
                                                                     <option value="{{ $prov->id }}"
-                                                                        {{ old('id_provinsi_alamat') == $prov->id ? 'selected' : '' }}>
+                                                                        {{ old('id_provinsi_alamat', $user->id_provinsi_alamat) == $prov->id ? 'selected' : '' }}>
                                                                         {{ $prov->nama_provinsi }}
                                                                     </option>
                                                                 @endforeach
@@ -132,7 +132,7 @@
                                                             <label>Nomor Telepon</label>
                                                             <input type="text" name="nomor_telepon" id="nomor_telepon"
                                                                 class="form-control @error('nomor_telepon') is-invalid @enderror"
-                                                                value="{{ old('nomor_telepon') }}"
+                                                                value="{{ old('nomor_telepon', $user->nomor_telepon) }}"
                                                                 placeholder="Masukan Nomor Telepon" pattern="\d*"
                                                                 minlength="10" maxlength="15" />
                                                             <!-- error message untuk nomor_telepon -->
@@ -146,7 +146,7 @@
                                                             <label>Nomor HP</label>
                                                             <input type="text" name="nomor_hp" id="nomor_hp"
                                                                 class="form-control @error('nomor_hp') is-invalid @enderror"
-                                                                value="{{ old('nomor_hp') }}"
+                                                                value="{{ old('nomor_hp', $user->nomor_hp) }}"
                                                                 placeholder="Masukan Nomor HP" pattern="\d*" minlength="12"
                                                                 maxlength="15" />
                                                             <!-- error message untuk nomor_hp -->
@@ -164,7 +164,7 @@
                                                             <label>Email</label>
                                                             <input type="email" name="email" id="email"
                                                                 class="form-control @error('email') is-invalid @enderror"
-                                                                value="{{ old('email') }}"
+                                                                value="{{ old('email', $user->email) }}"
                                                                 placeholder="Masukan Email" />
                                                             <!-- error message untuk email -->
                                                             @error('email')
@@ -181,20 +181,21 @@
                                                                 <option value="">Silahkan Pilih Kewarganegaraan
                                                                 </option>
                                                                 <option value="WNI Asli"
-                                                                    {{ old('kewarganegaraan') == 'WNI Asli' ? 'selected' : '' }}>
+                                                                    {{ old('kewarganegaraan', $user->kewarganegaraan) == 'WNI Asli' ? 'selected' : '' }}>
                                                                     WNI Asli
                                                                 </option>
                                                                 <option value="WNI Keturunan"
-                                                                    {{ old('kewarganegaraan') == 'WNI Keturunan' ? 'selected' : '' }}>
+                                                                    {{ old('kewarganegaraan', $user->kewarganegaraan) == 'WNI Keturunan' ? 'selected' : '' }}>
                                                                     WNI Keturunan
                                                                 </option>
                                                                 <option value="WNA"
-                                                                    {{ old('kewarganegaraan') == 'WNA' ? 'selected' : '' }}>
+                                                                    {{ old('kewarganegaraan', $user->kewarganegaraan) == 'WNA' ? 'selected' : '' }}>
                                                                     WNA
                                                                 </option>
                                                             </select>
                                                         </div>
                                                     </div>
+
                                                 </div>
 
                                                 <div class="row" id="negara-asal-row" style="display: none;">
@@ -205,7 +206,7 @@
                                                             <label>Negara Asal</label>
                                                             <input type="text" name="negara_asal" id="negara_asal"
                                                                 class="form-control @error('negara_asal') is-invalid @enderror"
-                                                                value="{{ old('negara_asal') }}"
+                                                                value="{{ old('negara_asal', $user->negara_asal) }}"
                                                                 placeholder="Masukan Negara Asal" />
                                                             <!-- error message untuk negara_asal -->
                                                             @error('negara_asal')
@@ -221,7 +222,7 @@
                                                             <label>Tanggal Lahir</label>
                                                             <input type="date" class="form-control"
                                                                 name="tanggal_lahir"
-                                                                value="{{ old('tanggal_lahir', now()->format('Y-m-d')) }}">
+                                                                value="{{ old('tanggal_lahir', $user->tanggal_lahir) }}">
 
                                                             @error('tanggal_lahir')
                                                                 <div class="d-block text-danger">{{ $message }}</div>
@@ -234,19 +235,19 @@
                                                             <select name="tempat_lahir" id="tempat_lahir"
                                                                 class="single-select"
                                                                 onchange="toggleLahirFields(this.value)">
-                                                                <option value="">Silahkan Pilih Tempat Lahir
-                                                                </option>
+                                                                <option value="">Silahkan Pilih Tempat Lahir</option>
                                                                 <option value="Dalam Negeri"
-                                                                    {{ old('tempat_lahir') == 'Dalam Negeri' ? 'selected' : '' }}>
+                                                                    {{ old('tempat_lahir', $user->tempat_lahir) == 'Dalam Negeri' ? 'selected' : '' }}>
                                                                     Dalam Negeri
                                                                 </option>
                                                                 <option value="Luar Negeri"
-                                                                    {{ old('tempat_lahir') == 'Luar Negeri' ? 'selected' : '' }}>
+                                                                    {{ old('tempat_lahir', $user->tempat_lahir) == 'Luar Negeri' ? 'selected' : '' }}>
                                                                     Luar Negeri
                                                                 </option>
                                                             </select>
                                                         </div>
                                                     </div>
+
                                                 </div>
 
 
@@ -260,7 +261,7 @@
                                                                 <option value="">Silahkan Pilih Provinsi</option>
                                                                 @foreach ($provinsi as $prov)
                                                                     <option value="{{ $prov->id }}"
-                                                                        {{ old('id_provinsi_lahir') == $prov->id ? 'selected' : '' }}>
+                                                                        {{ old('id_provinsi_lahir', $user->id_provinsi_lahir) == $prov->id ? 'selected' : '' }}>
                                                                         {{ $prov->nama_provinsi }}
                                                                     </option>
                                                                 @endforeach
@@ -289,7 +290,7 @@
                                                             <label>Negara Lahir</label>
                                                             <input type="text" name="negara_lahir" id="negara_lahir"
                                                                 class="form-control @error('negara_lahir') is-invalid @enderror"
-                                                                value="{{ old('negara_lahir') }}"
+                                                                value="{{ old('negara_lahir', $user->negara_lahir) }}"
                                                                 placeholder="Masukan Negara Lahir" />
                                                             @error('negara_lahir')
                                                                 <div class="d-block text-danger">{{ $message }}</div>
@@ -305,7 +306,7 @@
                                                             <div class="form-check form-check-inline">
                                                                 <input class="form-check-input" type="radio"
                                                                     name="jenis_kelamin" id="pria" value="Pria"
-                                                                    {{ old('jenis_kelamin') == 'Pria' ? 'checked' : '' }}>
+                                                                    {{ old('jenis_kelamin', $user->jenis_kelamin) == 'Pria' ? 'checked' : '' }}>
                                                                 <label class="form-check-label" for="pria">
                                                                     Pria
                                                                 </label>
@@ -313,7 +314,7 @@
                                                             <div class="form-check form-check-inline">
                                                                 <input class="form-check-input" type="radio"
                                                                     name="jenis_kelamin" id="wanita" value="Wanita"
-                                                                    {{ old('jenis_kelamin') == 'Wanita' ? 'checked' : '' }}>
+                                                                    {{ old('jenis_kelamin', $user->jenis_kelamin) == 'Wanita' ? 'checked' : '' }}>
                                                                 <label class="form-check-label" for="wanita">
                                                                     Wanita
                                                                 </label>
@@ -332,7 +333,7 @@
                                                                 <input class="form-check-input" type="radio"
                                                                     name="status_menikah" id="belum_menikah"
                                                                     value="Belum Menikah"
-                                                                    {{ old('status_menikah') == 'Belum Menikah' ? 'checked' : '' }}>
+                                                                    {{ old('status_menikah', $user->status_menikah) == 'Belum Menikah' ? 'checked' : '' }}>
                                                                 <label class="form-check-label" for="belum_menikah">
                                                                     Belum Menikah
                                                                 </label>
@@ -340,7 +341,7 @@
                                                             <div class="form-check form-check-inline">
                                                                 <input class="form-check-input" type="radio"
                                                                     name="status_menikah" id="menikah" value="Menikah"
-                                                                    {{ old('status_menikah') == 'Menikah' ? 'checked' : '' }}>
+                                                                    {{ old('status_menikah', $user->status_menikah) == 'Menikah' ? 'checked' : '' }}>
                                                                 <label class="form-check-label" for="menikah">
                                                                     Menikah
                                                                 </label>
@@ -349,7 +350,7 @@
                                                                 <input class="form-check-input" type="radio"
                                                                     name="status_menikah" id="lain_lain"
                                                                     value="Lain-lain (janda/duda)"
-                                                                    {{ old('status_menikah') == 'Lain-lain (janda/duda)' ? 'checked' : '' }}>
+                                                                    {{ old('status_menikah', $user->status_menikah) == 'Lain-lain (janda/duda)' ? 'checked' : '' }}>
                                                                 <label class="form-check-label" for="lain_lain">
                                                                     Lain-lain (janda/duda)
                                                                 </label>
@@ -362,6 +363,7 @@
                                                     </div>
                                                 </div>
 
+
                                                 <div class="row">
                                                     <div class="col-6">
                                                         <div class="form-group mt-4">
@@ -371,7 +373,7 @@
                                                                 <option value="">Silahkan Pilih Agama</option>
                                                                 @foreach ($agama as $agm)
                                                                     <option value="{{ $agm->id }}"
-                                                                        {{ old('id_agama') == $agm->id ? 'selected' : '' }}>
+                                                                        {{ old('id_agama', $user->id_agama) == $agm->id ? 'selected' : '' }}>
                                                                         {{ $agm->nama_agama }}
                                                                     </option>
                                                                 @endforeach
@@ -384,7 +386,7 @@
                                                             <label>Nilai Matematika</label>
                                                             <input type="text" name="nilai_mtk" id="nilai_mtk"
                                                                 class="form-control @error('nilai_mtk') is-invalid @enderror"
-                                                                value="{{ old('nilai_mtk') }}"
+                                                                value="{{ old('nilai_mtk', $user->nilai_mtk) }}"
                                                                 placeholder="Masukan Nilai Matematika" />
                                                             <!-- error message untuk nilai_mtk -->
                                                             @error('nilai_mtk')
@@ -400,7 +402,7 @@
                                                             <label>Nilai Bahasa Indonesia</label>
                                                             <input type="text" name="nilai_bindo" id="nilai_bindo"
                                                                 class="form-control @error('nilai_bindo') is-invalid @enderror"
-                                                                value="{{ old('nilai_bindo') }}"
+                                                                value="{{ old('nilai_bindo', $user->nilai_bindo) }}"
                                                                 placeholder="Masukan Nilai Bahasa Indonesia" />
                                                             <!-- error message untuk nilai_bindo -->
                                                             @error('nilai_bindo')
@@ -414,7 +416,7 @@
                                                             <label>Nilai Bahasa Inggris</label>
                                                             <input type="text" name="nilai_bing" id="nilai_bing"
                                                                 class="form-control @error('nilai_bing') is-invalid @enderror"
-                                                                value="{{ old('nilai_bing') }}"
+                                                                value="{{ old('nilai_bing', $user->nilai_bing) }}"
                                                                 placeholder="Masukan Nilai Bahasa Inggris" />
                                                             <!-- error message untuk nilai_bing -->
                                                             @error('nilai_bing')
@@ -428,6 +430,13 @@
                                                     <div class="col-6">
                                                         <div class="form-group mt-4">
                                                             <label class="d-block">Foto Formal</label>
+                                                            @if ($user->foto)
+                                                                <img src="{{ asset('/storage/' . $user->foto) }}"
+                                                                    class="img-preview img-fluid mb-3 col-sm-3">
+                                                            @else
+                                                                <img src="{{ asset('../assets/images/user.png') }}"
+                                                                    class="img-preview img-fluid mb-3 col-sm-3">
+                                                            @endif
                                                             <img class="img-preview img-fluid col-md-3 mb-3">
                                                             <div class="custom-file">
                                                                 <input type="file" class="custom-file-input"
@@ -470,7 +479,17 @@
         @endif
 
         <script>
-            function fetchKabupatenKota(provinsiId) {
+            document.addEventListener('DOMContentLoaded', function() {
+                const provinsiId = document.getElementById('id_provinsi_alamat').value;
+                const kabupatenKotaId = "{{ old('id_kabupaten_kota_alamat', $user->id_kabupaten_kota_alamat) }}";
+                const kabupatenKotaLahirId = "{{ old('id_kabupaten_kota_lahir', $user->id_kabupaten_kota_lahir) }}";
+
+                // Memuat dropdown Kabupaten/Kota saat halaman dimuat
+                fetchKabupatenKota(provinsiId, kabupatenKotaId);
+                fetchKabupatenKotaLahir(provinsiId, kabupatenKotaLahirId);
+            });
+
+            function fetchKabupatenKota(provinsiId, selectedKabupatenKotaId = '') {
                 var kabupatenKotaSelect = document.getElementById('id_kabupaten_kota_alamat');
 
                 // Kosongkan dropdown Kabupaten/Kota
@@ -484,6 +503,10 @@
                                 const option = document.createElement('option');
                                 option.value = id;
                                 option.textContent = data[id];
+                                // Set option sebagai terpilih jika id-nya sesuai
+                                if (id == selectedKabupatenKotaId) {
+                                    option.selected = true;
+                                }
                                 kabupatenKotaSelect.appendChild(option);
                             }
                         })
@@ -491,8 +514,7 @@
                 }
             }
 
-
-            function fetchKabupatenKotaLahir(provinsiId) {
+            function fetchKabupatenKotaLahir(provinsiId, selectedKabupatenKotaLahirId = '') {
                 var kabupatenKotaLahirSelect = document.getElementById('id_kabupaten_kota_lahir');
 
                 // Kosongkan dropdown Kabupaten/Kota
@@ -506,6 +528,9 @@
                                 const option = document.createElement('option');
                                 option.value = id;
                                 option.textContent = data[id];
+                                if (id == selectedKabupatenKotaLahirId) {
+                                    option.selected = true;
+                                }
                                 kabupatenKotaLahirSelect.appendChild(option);
                             }
                         })
