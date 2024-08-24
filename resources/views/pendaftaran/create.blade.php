@@ -132,7 +132,8 @@
                                                             <input type="text" name="nomor_telepon" id="nomor_telepon"
                                                                 class="form-control @error('nomor_telepon') is-invalid @enderror"
                                                                 value="{{ old('nomor_telepon') }}"
-                                                                placeholder="Masukan Nomor Telepon" />
+                                                                placeholder="Masukan Nomor Telepon" pattern="\d*"
+                                                                minlength="10" maxlength="15" />
                                                             <!-- error message untuk nomor_telepon -->
                                                             @error('nomor_telepon')
                                                                 <div class="d-block text-danger">{{ $message }}</div>
@@ -145,7 +146,8 @@
                                                             <input type="text" name="nomor_hp" id="nomor_hp"
                                                                 class="form-control @error('nomor_hp') is-invalid @enderror"
                                                                 value="{{ old('nomor_hp') }}"
-                                                                placeholder="Masukan Nomor HP" />
+                                                                placeholder="Masukan Nomor HP" pattern="\d*" minlength="12"
+                                                                maxlength="15" />
                                                             <!-- error message untuk nomor_hp -->
                                                             @error('nomor_hp')
                                                                 <div class="d-block text-danger">{{ $message }}</div>
@@ -153,6 +155,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
 
                                                 <div class="row">
                                                     <div class="col-6">
@@ -277,6 +280,9 @@
                                                 </div>
 
                                                 <div class="row" id="negara-lahir-row" style="display: none;">
+                                                    <div class="col-6">
+
+                                                    </div>
                                                     <div class="col-6">
                                                         <div class="form-group mt-4">
                                                             <label>Negara Lahir</label>
@@ -416,6 +422,24 @@
                                                     </div>
                                                 </div>
 
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <div class="form-group mt-4">
+                                                            <label class="d-block">Foto Formal</label>
+                                                            <img class="img-preview img-fluid col-md-3 mb-3">
+                                                            <div class="custom-file">
+                                                                <input type="file" class="custom-file-input"
+                                                                    name="foto" id="foto"
+                                                                    aria-describedby="inputGroupFileAddon01"
+                                                                    onchange="previewImage()">
+                                                                <label class="custom-file-label" for="foto">Masukan
+                                                                    Foto</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
                                                 <div class="btn-group mt-3 w-100">
                                                     <button type="submit"
                                                         class="btn btn-primary btn-block">Simpan</button>
@@ -525,6 +549,42 @@
             document.addEventListener('DOMContentLoaded', function() {
                 var tempatLahir = document.getElementById('tempat_lahir').value;
                 toggleLahirFields(tempatLahir);
+            });
+        </script>
+        <script>
+            function previewImage() {
+                const image = document.querySelector("#foto");
+                const imgPreview = document.querySelector(".img-preview");
+
+                imgPreview.style.display = 'block';
+
+                const lihatgambar = URL.createObjectURL(image.files[0]);
+                imgPreview.src = lihatgambar;
+            }
+        </script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var nomorTeleponInput = document.getElementById('nomor_telepon');
+                var nomorHpInput = document.getElementById('nomor_hp');
+
+                function validateInput(event) {
+                    var input = event.target;
+                    // Menghapus karakter non-angka
+                    input.value = input.value.replace(/\D/g, '');
+
+                    // Memeriksa panjang minimal
+                    if (input.id === 'nomor_telepon' && input.value.length < 10) {
+                        input.setCustomValidity('Nomor Telepon harus terdiri dari minimal 10 angka.');
+                    } else if (input.id === 'nomor_hp' && input.value.length < 12) {
+                        input.setCustomValidity('Nomor HP harus terdiri dari minimal 12 angka.');
+                    } else {
+                        input.setCustomValidity('');
+                    }
+                }
+
+                nomorTeleponInput.addEventListener('input', validateInput);
+                nomorHpInput.addEventListener('input', validateInput);
             });
         </script>
     @endsection

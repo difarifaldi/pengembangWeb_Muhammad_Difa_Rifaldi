@@ -27,4 +27,8 @@ class PendaftaranController extends Controller
         $kabupatenKota = KabupatenKota::where('id_provinsi', $id_provinsi)->pluck('nama_kabupaten_kota', 'id');
         return response()->json($kabupatenKota);
     }
+
+    public function store(){
+        
+    }
 }
