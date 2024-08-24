@@ -11,9 +11,13 @@ class KabupatenKota extends Model
     protected $table = 'kabupaten_kota';
     protected $guarded = [];
 
-    public function provinsi()
+    public function provinsiAlamat()
     {
-        return $this->belongsTo(KabupatenKota::class, 'id_provinsi');
+        return $this->belongsTo(KabupatenKota::class, 'id_provinsi_alamat');
+    }
+    public function provinsiLahir()
+    {
+        return $this->belongsTo(KabupatenKota::class, 'id_provinsi_lahir');
     }
 
     public function userKabupatenKotaAlamat()

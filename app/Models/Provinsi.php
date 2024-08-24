@@ -7,9 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Provinsi extends Model
 {
     protected $table = 'provinsi';
-    public function kabupatenKota()
+    public function kabupatenKotaAlamat()
     {
-        return $this->hasMany(KabupatenKota::class, 'id_provinsi');
+        return $this->hasMany(KabupatenKota::class, 'id_provinsi_alamat');
+    }
+    public function kabupatenKotaLahir()
+    {
+        return $this->hasMany(KabupatenKota::class, 'id_provinsi_lahir');
     }
 
     public function userProvinsiLahir()

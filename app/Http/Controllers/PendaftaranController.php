@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agama;
 use App\Models\KabupatenKota;
 use App\Models\Provinsi;
 use App\Models\User;
@@ -17,7 +18,8 @@ class PendaftaranController extends Controller
     public function create()
     {
         $provinsi = Provinsi::all();
-        return view('pendaftaran.create', compact('provinsi'));
+        $agama = Agama::all();
+        return view('pendaftaran.create', compact('provinsi', 'agama'));
     }
 
     public function getKabupatenKota($id_provinsi)
