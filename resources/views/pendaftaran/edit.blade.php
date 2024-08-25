@@ -16,7 +16,13 @@
                                     <ol class="breadcrumb mb-0 p-0">
                                         <li class="breadcrumb-item"><a href="/"><i class='bx bx-home-alt'></i></a>
                                         </li>
-                                        <li class="breadcrumb-item active" aria-current="page">Pendaftaran Akun</li>
+                                        @role('mahasiswa')
+                                            <li class="breadcrumb-item active" aria-current="page">Pendaftaran Mahasiswa Baru
+                                            </li>
+                                        @endrole
+                                        @role('admin')
+                                            <li class="breadcrumb-item active" aria-current="page">Ubah Data Pendaftaran</li>
+                                        @endrole
                                     </ol>
                                 </nav>
                             </div>
@@ -28,7 +34,12 @@
                                     <div class="card border-0 shadow-sm rounded">
                                         <div class="card-body">
                                             <div>
-                                                <h4 class="text-center my-4">Pendaftaran Akun</h4>
+                                                @role('mahasiswa')
+                                                    <h4 class="text-center my-4">Pendaftaran Mahasiswa Baru</h4>
+                                                @endrole
+                                                @role('admin')
+                                                    <h4 class="text-center my-4">Ubah Data Pendaftaran Mahasiswa</h4>
+                                                @endrole
                                             </div>
                                             <hr />
                                             <!-- Formulir pendaftaran -->
@@ -147,8 +158,8 @@
                                                             <input type="text" name="nomor_hp" id="nomor_hp"
                                                                 class="form-control @error('nomor_hp') is-invalid @enderror"
                                                                 value="{{ old('nomor_hp', $user->nomor_hp) }}"
-                                                                placeholder="Masukan Nomor HP" pattern="\d*" minlength="12"
-                                                                maxlength="15" />
+                                                                placeholder="Masukan Nomor HP" pattern="\d*"
+                                                                minlength="12" maxlength="15" />
                                                             <!-- error message untuk nomor_hp -->
                                                             @error('nomor_hp')
                                                                 <div class="d-block text-danger">{{ $message }}</div>
