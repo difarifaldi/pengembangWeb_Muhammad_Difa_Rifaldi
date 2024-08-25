@@ -37,4 +37,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/user', UserController::class);
     Route::resource('/pendaftaran', PendaftaranController::class)->parameters(['pendaftaran' => 'user']);
     Route::get('/getKabupatenKota/{id_provinsi}', [PendaftaranController::class, 'getKabupatenKota']);
+
+    Route::get('/export-pdf', [PendaftaranController::class, 'exportPDF'])->name('pendaftaran.export-pdf');
 });

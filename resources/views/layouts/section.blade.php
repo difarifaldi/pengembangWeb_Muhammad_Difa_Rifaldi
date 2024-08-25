@@ -19,8 +19,8 @@
             <!--End Back To Top Button-->
             <!--footer -->
             <div class="footer">
-                <p class="mb-0">&copy;2024 | Developed By : <a href="#" target="_blank" style="color: blue;">POLITEKNIK
-                        NEGERI JAKARTA</a>
+                <p class="mb-0">&copy;2024 | Developed By : <a href="#" target="_blank" style="color: blue;">Muhammad
+                        Difa Rifaldi</a>
                 </p>
             </div>
             <!-- end footer -->

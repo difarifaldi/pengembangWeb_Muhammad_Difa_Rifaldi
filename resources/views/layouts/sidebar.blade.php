@@ -24,46 +24,36 @@
                 </a>
             </li>
 
-            {{-- Audit Mutu --}}
             <li class="menu-label">Pendaftaran Mahasiswa</li>
-            <li>
-                <a class="has-arrow" href="javascript:;">
-                    <div class="parent-icon text-success"> <i class="bi bi-mortarboard"></i>
-                    </div>
-                    <div class="menu-title">Data Pendaftaran</div>
-                </a>
-                <ul>
-                    @role('mahasiswa')
-                        <li> <a href="/pendaftaran/{{ Auth::user()->id }}/edit">
-                                <i class="bi bi-person-add"></i>Pendaftaran Mahasiswa
-                            </a>
-                        </li>
-                    @endhasrole
-                    @role('admin')
-                        <li> <a href="/pendaftaran"><i class="bi bi-person-workspace"></i>Data Mahasiswa</a>
-                        </li>
-                    @endrole
+            @role('mahasiswa')
+                <li>
+                    <a href="/pendaftaran/{{ Auth::user()->id }}/edit">
+                        <div class="parent-icon text-success"><i class="bi bi-person-add"></i>
+                        </div>
+                        <div class="menu-title">Pendaftaran Mahasiswa</div>
+                    </a>
+                </li>
+            @endhasrole
+            @role('admin')
+                <li>
+                    <a href="/pendaftaran">
+                        <div class="parent-icon text-success"><i class="bi bi-person-workspace"></i>
+                        </div>
+                        <div class="menu-title">Data Mahasiswa</div>
+                    </a>
+                </li>
+            @endhasrole
 
-                </ul>
-            </li>
 
 
             @role('admin')
                 <li class="menu-label">Manajemen User</li>
-
-
                 <li>
-                    <a class="has-arrow" href="javascript:;">
-                        <div class="parent-icon text-success"> <i class="bi bi-person-gear"></i>
+                    <a href="/user">
+                        <div class="parent-icon text-success"><i class="bi bi-person-gear"></i>
                         </div>
-                        <div class="menu-title ">Manajemen User</div>
+                        <div class="menu-title">Manajemen User</div>
                     </a>
-                    <ul>
-                        <li> <a href="/user"><i class="bi bi-people"></i>Daftar User</a>
-                        </li>
-
-
-                    </ul>
                 </li>
             @endrole
         </ul>

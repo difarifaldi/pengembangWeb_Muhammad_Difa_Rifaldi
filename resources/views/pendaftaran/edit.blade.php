@@ -451,9 +451,15 @@
 
                                                 </div>
 
-                                                <div class="btn-group mt-3 w-100">
-                                                    <button type="submit"
-                                                        class="btn btn-primary btn-block">Simpan</button>
+                                                <div class="btn-group mt-3 w-25">
+                                                    <button type="submit" class="btn btn-primary"> <span>Simpan</span> <i
+                                                            class="bi bi-arrow-right-square"></i></button>
+                                                </div>
+                                                <div class="btn-group mt-3 w-25">
+                                                    <a href="{{ route('pendaftaran.export-pdf', ['id_user' => $user->id]) }}"
+                                                        class="btn btn-success"><i class="bi bi-file-earmark-pdf"></i>
+                                                        <span>Export
+                                                            PDF</span> </a>
                                                 </div>
                                             </form>
                                             <!-- End Formulir pendaftaran -->

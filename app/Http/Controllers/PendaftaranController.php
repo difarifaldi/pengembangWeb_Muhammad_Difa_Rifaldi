@@ -6,6 +6,7 @@ use App\Models\Agama;
 use App\Models\KabupatenKota;
 use App\Models\Provinsi;
 use App\Models\User;
+use PDF;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -94,5 +95,25 @@ class PendaftaranController extends Controller
 
             return response()->json(['error' => 'Terjadi kesalahan saat menghapus user.'], 500);
         }
+    }
+
+    public function exportPDF(Request $request)
+    {
+        // Ambil ID user dari request
+        $userId = $request->input('id_user');
+
+        // Ambil data user berdasarkan ID
+        $user = User::find($userId);
+
+        // Periksa apakah user ditemukan
+        if (!$user) {
+            return redirect()->back()->with('error', 'User tidak ditemukan.');
+        }
+
+        // Generate PDF
+        $pdf = PDF::loadView('pendaftaran.pdf', compact('user'))->setPaper('a4', 'portrait');
+
+        // Download file PDF
+        return $pdf->download('Form Pendaftaran ' . $user->nama_lengkap  . '.pdf');
     }
 }
