@@ -62,13 +62,14 @@
 
 
         <!-- JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-        <script src="{{ asset('../assets/js/jquery.min.js') }}"></script>
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <!-- Popper.js and Bootstrap JS -->
         <script src="{{ asset('../assets/js/popper.min.js') }}"></script>
         <script src="{{ asset('../assets/js/bootstrap.min.js') }}"></script>
 
-        <!--Select2-->
+        <!-- Select2 -->
         <script src="{{ asset('../assets/plugins/select2/js/select2.min.js') }}"></script>
         <script>
             $('.single-select').select2({
@@ -85,33 +86,23 @@
             });
         </script>
 
-        <!--plugins-->
+        <!-- Plugins -->
         <script src="{{ asset('../assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
         <script src="{{ asset('../assets/plugins/metismenu/js/metisMenu.min.js') }}"></script>
         <script src="{{ asset('../assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
-        <!--Data Tables js-->
-        <!-- jQuery -->
-        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 
         <!-- DataTables JS -->
         <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-        <!-- Buttons Extension JS -->
         <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
         <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.flash.min.js"></script>
         <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
         <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
         <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.colVis.min.js"></script>
-        <!-- JSZip and PDFMake for Excel and PDF Export -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
 
-
-        <script src="{{ asset('../assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
-        <script src="{{ asset('../assets/js/index.js') }}"></script>
-        <!-- Data Tables Example -->
+        <!-- Data Tables Initialization -->
         <script>
             $(document).ready(function() {
                 $('#example').DataTable({
@@ -119,18 +110,18 @@
                         [0, 'asc']
                     ],
                     scrollX: true,
-                    dom: 'Bfrtip', // Untuk menambahkan tombol di bagian atas tabel
+                    dom: 'Bfrtip',
                     buttons: [
                         'copy', 'csv', 'excel', 'pdf', 'print', 'colvis'
                     ]
                 });
             });
         </script>
+
         <!-- App JS -->
         <script src="{{ asset('../assets/js/app.js') }}"></script>
         <script>
             $(document).ready(function() {
-                // Initialize PerfectScrollbar after elements are loaded
                 if (document.querySelector('.dashboard-social-list')) {
                     new PerfectScrollbar('.dashboard-social-list');
                 }
@@ -142,9 +133,8 @@
                 }
             });
         </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js"></script>
 
-        <!-- Example using SweetAlert2 for notifications -->
+        <!-- SweetAlert2 -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         @if ($message = Session::get('failed'))
             <script>
@@ -167,5 +157,6 @@
                 });
             </script>
         @endif
+
     </body>
 @endsection
