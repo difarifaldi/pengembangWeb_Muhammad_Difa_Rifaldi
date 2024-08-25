@@ -89,7 +89,7 @@
             <tr>
                 <th class="label">Nama Lengkap</th>
                 <td class="data">: {{ $user->nama_lengkap }}</td>
-                <td class="photo" rowspan="18">
+                <td class="photo" rowspan="19">
                     <!-- Gambar Foto -->
                     <?php
                     $fotoValue = $user->foto;
